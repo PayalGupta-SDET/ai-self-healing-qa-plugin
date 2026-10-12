@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI Auto-Healing & TestRail Scanner</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 12px;
+      background: #0f172a;
+      color: #f8fafc;
+      margin: 0;
+    }
+    h3 { margin-top: 0; color: #38bdf8; font-size: 15px; }
+    
+    .btn-group {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 11px;
+      flex: 1;
+    }
+
+    button#scanBtn { background: #0284c7; color: white; }
+    button#pickerBtn { background: #8b5cf6; color: white; }
+    button#pickerBtn.active { background: #ef4444; }
+    button#testrailBtn { background: #e11d48; color: white; }
+    button#aiSettingsBtn { background: #10b981; color: white; }
+
+    .drawer {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .input-field {
+      width: calc(100% - 12px);
+      padding: 6px;
+      margin-bottom: 6px;
+      background: #0f172a;
+      border: 1px solid #475569;
+      color: white;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: bold;
+      background: #475569;
+      color: white;
+      margin-right: 4px;
+    }
+    
+    .ai-badge {
+      background: #10b981;
+      color: #042f2e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: bold;
+      margin-left: 6px;
+    }
+
+    .clickable-locator {
+      background: #090d16;
+      color: #a5f3fc;
+      padding: 4px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      word-break: break-all;
+      display: inline-block;
+      margin-top: 2px;
+      cursor: pointer;
+      border: 1px solid #1e293b;
+      width: calc(100% - 14px);
+    }
+    
+    .ai-suggestion-box {
+      background: #064e3b;
+      border-left: 3px solid #10b981;
+      padding: 8px;
+      margin-top: 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      color: #d1fae5;
+    }
+
+    .ai-btn {
+      background: #10b981;
+      color: #042f2e;
+      margin-top: 6px;
+      width: 100%;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h3>AI Locator Scanner & Healer</h3>
+  
+  <div class="btn-group">
+    <button id="scanBtn">🌐 Scan All</button>
+    <button id="pickerBtn">🎯 Pick</button>
+    <button id="testrailBtn">📊 TestRail</button>
+    <button id="aiSettingsBtn">⚡ AI Config</button>
+  </div>
+
+  <!-- AI API Drawer -->
+  <div id="aiDrawer" class="drawer">
+    <h4 style="margin:0 0 8px 0; color:#10b981;">Gemini AI API Configuration</h4>
+    <input type="password" id="geminiApiKey" class="input-field" placeholder="Enter Gemini API Key">
+    <button id="saveAiKeyBtn" style="background:#10b981; color:#042f2e; width:100%;">Save AI Key</button>
+  </div>
+
+  <!-- TestRail Drawer -->
+  <div id="testrailPanel" class="drawer">
+    <h4 style="margin:0 0 8px 0; color:#f43f5e;">TestRail Setup</h4>
+    <input type="text" id="trDomain" class="input-field" placeholder="Domain (https://company.testrail.com)">
+    <input type="text" id="trUser" class="input-field" placeholder="TestRail Email">
+    <input type="password" id="trApiKey" class="input-field" placeholder="API Key">
+    <input type="text" id="trRunId" class="input-field" placeholder="Run ID (e.g. 1045)">
+    <button id="trFetchBtn" style="background:#f43f5e; color:white; width:100%;">Fetch Failures & Analyze with AI</button>
+  </div>
+
+  <div id="output">Click "AI Config" to enter your API Key, or scan page elements.</div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Universal Locator Scanner & TestRail Healer",
+  "version": "1.3",
+  "description": "Scans unique locators and analyzes TestRail test run failure keywords.",
+  "permissions": [
+    "sidePanel",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://*.testrail.com/*",
+    "https://*.testrail.io/*"
+  ],
+  "action": {
+    "default_title": "Open Locator Healer & TestRail Analytics"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}
